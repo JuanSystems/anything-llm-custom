@@ -15,7 +15,7 @@ import showToast from "@/utils/toast";
 import { LAST_VISITED_WORKSPACE } from "@/utils/constants";
 import { safeJsonParse } from "@/utils/request";
 
-export default function ActiveWorkspaces({ showThreads = true }) {
+export default function ActiveWorkspaces() {
   const navigate = useNavigate();
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
@@ -204,7 +204,7 @@ export default function ActiveWorkspaces({ showThreads = true }) {
                           </div>
                         </a>
                       </div>
-                      {isActive && showThreads && (
+                      {isActive && (
                         <ThreadContainer
                           workspace={workspace}
                           isActive={isActive}

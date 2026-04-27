@@ -128,7 +128,7 @@ export default function ThreadContainer({
 
   const activeThreadIdx = getActiveThreadIdx();
 
-   return (
+  return (
     <div className="flex flex-col" role="list" aria-label="Threads">
       <ThreadItem
         idx={0}
@@ -167,6 +167,7 @@ export default function ThreadContainer({
         threads={threads}
         onDelete={handleDeleteAll}
       />
+      <NewThreadButton workspace={workspace} />
     </div>
   );
 }

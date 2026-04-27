@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { List, Plus, CircleNotch } from "@phosphor-icons/react";
+import { List, Plus } from "@phosphor-icons/react";
 import NewWorkspaceModal, {
   useNewWorkspaceModal,
 } from "../Modals/NewWorkspace";
@@ -8,21 +8,13 @@ import useLogo from "@/hooks/useLogo";
 import useUser from "@/hooks/useUser";
 import Footer from "../Footer";
 import SettingsButton from "../SettingsButton";
-import { Link, useParams, useMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import paths from "@/utils/paths";
 import { useTranslation } from "react-i18next";
 import { useSidebarToggle, ToggleSidebarButton } from "./SidebarToggle";
 import SearchBox from "./SearchBox";
 import { Tooltip } from "react-tooltip";
 import { createPortal } from "react-dom";
-import showToast from "@/utils/toast";
-import Workspace from "@/models/workspace";
-import ThreadContainer from "./ActiveWorkspaces/ThreadContainer";
-import { LAST_VISITED_WORKSPACE } from "@/utils/constants";
-import { safeJsonParse } from "@/utils/request";
-
-
-
 
 export default function Sidebar() {
   const { user } = useUser();
@@ -64,140 +56,27 @@ export default function Sidebar() {
           </div>
           <div
             ref={sidebarRef}
-            className="relative mx-[16px] mt-[16px] mb-[2px] rounded-[16px] bg-theme-bg-sidebar light:bg-slate-200 border-[2px] border-theme-sidebar-border light:border-none min-w-[250px] p-[10px] h-[calc(100%-48px)]"
+            className="relative m-[16px] rounded-[16px] bg-theme-bg-sidebar light:bg-slate-200 border-[2px] border-theme-sidebar-border light:border-none min-w-[250px] p-[10px] h-[calc(100%-76px)]"
           >
-            <div className="flex flex-col h-full overflow-hidden min-w-[235px]">
-
-   {/* FIJO: Nuevo Chat - PRIMERO */}
-  <SidebarNewChatButton />
-  
-  {/* FIJO: Buscador */}
-  <div className="flex-shrink-0 pt-[10px] pb-1">
-    <SearchBox user={user} showNewWsModal={showNewWsModal} />
-  </div>
-
-  {/* FIJO: Workspaces */}
-  <div className="flex-shrink-0">
-    <ActiveWorkspaces showThreads={false} />
-  </div>
-
-  {/* SCROLLABLE: Threads */}
-  <SidebarActiveSection />
-
-  {/* FIJO: Footer */}
-  <div className="flex-shrink-0 mt-auto pt-1">
-  <Footer />
-  </div>
-
-</div>
+            <div className="flex flex-col h-full overflow-hidden">
+              <div className="flex-grow flex flex-col min-w-[235px] min-h-0">
+                <div className="relative h-[calc(100%-60px)] flex flex-col w-full justify-between pt-[10px] overflow-y-scroll no-scroll">
+                  <div className="flex flex-col gap-y-[14px]">
+                    <SearchBox user={user} showNewWsModal={showNewWsModal} />
+                    <ActiveWorkspaces />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 pb-3 rounded-b-[16px] bg-theme-bg-sidebar light:bg-slate-200 bg-opacity-80 backdrop-filter backdrop-blur-md z-10">
+                  <Footer />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         {showingNewWsModal && <NewWorkspaceModal hideModal={hideNewWsModal} />}
       </div>
       <WorkspaceAndThreadTooltips />
     </>
-  );
-}
-
-function SidebarNewChatButton() {
-  const { t } = useTranslation();
-  const { slug } = useParams();
-  const isHomePage = !!useMatch("/");
-  const [activeWorkspace, setActiveWorkspace] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function load() {
-      const all = await Workspace.all();
-      if (!all?.length) return;
-      if (slug) {
-        setActiveWorkspace(all.find((w) => w.slug === slug) || null);
-        return;
-      }
-      if (isHomePage) {
-        const lastVisited = safeJsonParse(localStorage.getItem(LAST_VISITED_WORKSPACE));
-        setActiveWorkspace(
-          (lastVisited?.slug ? all.find((w) => w.slug === lastVisited.slug) : null) || all[0]
-        );
-      }
-    }
-    load();
-  }, [slug, isHomePage]);
-
-  const handleNewThread = async () => {
-    if (!activeWorkspace) return;
-    setLoading(true);
-    const { thread, error } = await Workspace.threads.new(activeWorkspace.slug);
-    if (error) {
-      showToast(`No se pudo crear el chat - ${error}`, "error", { clear: true });
-      setLoading(false);
-      return;
-    }
-    window.location.replace(paths.workspace.thread(activeWorkspace.slug, thread.slug));
-  };
-
-  return (
-    <div className="flex-shrink-0 px-1 pb-1">
-      <button
-        onClick={handleNewThread}
-        disabled={!activeWorkspace || loading}
-        className="w-full flex h-[42px] items-center justify-center gap-x-2 border border-white/20 hover:border-white/40 bg-transparent hover:bg-white/5 rounded-full transition-all duration-200 disabled:opacity-50"
-      >
-        {loading ? (
-          <CircleNotch weight="bold" size={16} className="shrink-0 animate-spin text-white/70" />
-        ) : (
-          <div className="flex items-center justify-center w-[20px] h-[20px] rounded-full border border-white/40">
-            <Plus weight="bold" size={12} className="text-white/80" />
-          </div>
-        )}
-        <p className="text-white/80 text-sm font-medium">
-          {loading ? "Iniciando..." : t("new-thread", "Nuevo chat")}
-        </p>
-      </button>
-    </div>
-  );
-}
-
-function SidebarActiveSection() {
-  const { slug } = useParams();
-  const isHomePage = !!useMatch("/");
-  const [activeWorkspace, setActiveWorkspace] = useState(null);
-
-  useEffect(() => {
-    async function load() {
-      const all = await Workspace.all();
-      if (!all?.length) return;
-      if (slug) {
-        setActiveWorkspace(all.find((w) => w.slug === slug) || null);
-        return;
-      }
-      if (isHomePage) {
-        const lastVisited = safeJsonParse(localStorage.getItem(LAST_VISITED_WORKSPACE));
-        setActiveWorkspace(
-          (lastVisited?.slug ? all.find((w) => w.slug === lastVisited.slug) : null) || all[0]
-        );
-      }
-    }
-    load();
-  }, [slug, isHomePage]);
-
-  return (
-    <div className="flex-grow min-h-0 overflow-y-auto no-scroll">
-      {activeWorkspace && (
-        <>
-          <div className="flex items-center gap-x-2 px-2 pt-3 pb-1 border-t border-white/10">
-            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest truncate">
-              {activeWorkspace.name}
-            </p>
-          </div>
-          <ThreadContainer
-            workspace={activeWorkspace}
-            isActive={true}
-            isVirtualThread={isHomePage && !slug}
-          />
-        </>
-      )}
-    </div>
   );
 }
 
@@ -214,6 +93,8 @@ export function SidebarMobileHeader() {
   const { user } = useUser();
 
   useEffect(() => {
+    // Darkens the rest of the screen
+    // when sidebar is open.
     function handleBg() {
       if (showSidebar) {
         setTimeout(() => {
@@ -267,6 +148,7 @@ export function SidebarMobileHeader() {
           className="relative h-[100vh] fixed top-0 left-0  rounded-r-[26px] bg-theme-bg-sidebar w-[80%] p-[18px] "
         >
           <div className="w-full h-full flex flex-col overflow-x-hidden items-between">
+            {/* Header Information */}
             <div className="flex w-full items-center justify-between gap-x-4">
               <div className="flex shrink-1 w-fit items-center justify-start">
                 <img
@@ -282,6 +164,8 @@ export function SidebarMobileHeader() {
                 </div>
               )}
             </div>
+
+            {/* Primary Body */}
             <div className="h-full flex flex-col w-full justify-between pt-4 ">
               <div className="h-auto md:sidebar-items">
                 <div className=" flex flex-col gap-y-4 overflow-y-scroll no-scroll pb-[60px]">
