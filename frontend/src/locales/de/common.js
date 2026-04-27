@@ -336,7 +336,7 @@ const TRANSLATIONS = {
         readActions: "Lesen von Aktionen",
         writeActions: "Aktionen",
         warning:
-          "Der Zugriff auf das Dateisystem kann gefährlich sein, da er Dateien ändern oder löschen kann. Bitte konsultieren Sie vor der Aktivierung die <link>Dokumentation</link>.",
+          "Der Zugriff auf das Dateisystem kann gefährlich sein, da er Dateien ändern oder löschen kann. Bitte konsultieren Sie vor der Aktivierung die <a>Dokumentation</a>.",
         skills: {
           "read-text-file": {
             title: "Datei öffnen/lesen",
@@ -1304,6 +1304,12 @@ const TRANSLATIONS = {
         "Die Genehmigung für die Bestellung der Werkzeuge wurde erteilt.",
       tool_call_was_rejected: "Die Anfrage nach dem Werkzeug wurde abgelehnt.",
     },
+    custom_skills: "Individuelle Fähigkeiten",
+    agent_flows: "Datenströme",
+    no_tools_found: "Keine passenden Werkzeuge gefunden.",
+    loading_mcp_servers: "MCP-Server laden...",
+    app_integrations: "Anwendungen und Integrationen",
+    sub_skills: "Spezifische Fähigkeiten",
   },
   profile_settings: {
     edit_account: "Account bearbeiten",

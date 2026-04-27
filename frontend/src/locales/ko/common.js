@@ -330,7 +330,7 @@ const TRANSLATIONS = {
         readActions: "실행 내용 보기",
         writeActions: "실행 내용",
         warning:
-          "파일 시스템 접근은 위험할 수 있습니다. 왜냐하면 파일 내용을 변경하거나 삭제할 수 있기 때문입니다. 사용하기 전에 반드시 <link>문서</link>를 참조하십시오.",
+          "파일 시스템 접근은 위험할 수 있습니다. 왜냐하면 파일 내용을 변경하거나 삭제할 수 있기 때문입니다. 사용하기 전에 반드시 <a>문서</a>를 참조하십시오.",
         skills: {
           "read-text-file": {
             title: "파일 읽기",
@@ -1249,6 +1249,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "도구 사용 승인",
       tool_call_was_rejected: "도구 호출이 거부되었습니다.",
     },
+    custom_skills: "맞춤형 기술",
+    agent_flows: "에이전트 흐름",
+    no_tools_found: "일치하는 도구가 없습니다.",
+    loading_mcp_servers: "MCP 서버 로딩 중...",
+    app_integrations: "앱 통합",
+    sub_skills: "세부 기술",
   },
   profile_settings: {
     edit_account: "계정 정보 수정",

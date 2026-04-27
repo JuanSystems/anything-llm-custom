@@ -326,7 +326,7 @@ const TRANSLATIONS = {
         readActions: "行動",
         writeActions: "行動",
         warning:
-          "ファイルシステムへのアクセスは危険であり、ファイルの内容を変更または削除する可能性があります。設定する前に、必ず<link>のドキュメント</link>を参照してください。",
+          "ファイルシステムへのアクセスは危険であり、ファイルの内容を変更または削除する可能性があります。設定する前に、必ず<a>のドキュメント</a>を参照してください。",
         skills: {
           "read-text-file": {
             title: "ファイルを開く",
@@ -1168,6 +1168,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "ツールの使用許可が承認されました",
       tool_call_was_rejected: "ツール呼び出しは拒否されました",
     },
+    custom_skills: "カスタマイズ可能なスキル",
+    agent_flows: "エージェント間の流れ",
+    no_tools_found: "一致するツールは見つかりませんでした",
+    loading_mcp_servers: "MCP サーバーの読み込み中...",
+    app_integrations: "アプリケーション連携",
+    sub_skills: "専門スキル",
   },
   profile_settings: {
     edit_account: "アカウントを編集",

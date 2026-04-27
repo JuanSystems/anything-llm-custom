@@ -310,7 +310,7 @@ const TRANSLATIONS = {
         readActions: "閱讀行動",
         writeActions: "撰寫動作",
         warning:
-          "訪問檔案系統可能存在風險，因為它可能會修改或刪除檔案。在啟用之前，請務必查閱相關<link>文件</link>。",
+          "訪問檔案系統可能存在風險，因為它可能會修改或刪除檔案。在啟用之前，請務必查閱相關<a>文件</a>。",
         skills: {
           "read-text-file": {
             title: "開啟檔案",
@@ -1108,6 +1108,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "工具請求已獲得批准。",
       tool_call_was_rejected: "請求已遭拒絕",
     },
+    custom_skills: "客製化技能",
+    agent_flows: "代理人流",
+    no_tools_found: "未找到匹配的工具",
+    loading_mcp_servers: "正在載入 MCP 伺服器...",
+    app_integrations: "應用程式整合",
+    sub_skills: "細項技能",
   },
   profile_settings: {
     edit_account: "編輯帳戶",

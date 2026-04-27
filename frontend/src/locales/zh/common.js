@@ -320,7 +320,7 @@ const TRANSLATIONS = {
         readActions: "阅读操作",
         writeActions: "编写操作",
         warning:
-          "访问文件系统可能存在风险，因为它可能修改或删除文件。在启用之前，请务必查阅<link>文档</link>。",
+          "访问文件系统可能存在风险，因为它可能修改或删除文件。在启用之前，请务必查阅<a>文档</a>。",
         skills: {
           "read-text-file": {
             title: "读取文件",
@@ -1195,6 +1195,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "工具使用申请已获得批准。",
       tool_call_was_rejected: "请求获取工具已被拒绝。",
     },
+    custom_skills: "定制技能",
+    agent_flows: "代理人流动",
+    no_tools_found: "未找到匹配的工具",
+    loading_mcp_servers: "正在加载 MCP 服务器…",
+    app_integrations: "应用程序集成",
+    sub_skills: "基本技能",
   },
   profile_settings: {
     edit_account: "编辑帐户",

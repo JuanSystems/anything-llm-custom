@@ -331,7 +331,7 @@ const TRANSLATIONS = {
         readActions: "Lees acties",
         writeActions: "Schrijf acties",
         warning:
-          "Toegang tot het bestandssysteem kan gevaarlijk zijn, omdat het bestanden kan wijzigen of verwijderen. Raadpleeg de <link>documentatie</link> voordat u dit activeert.",
+          "Toegang tot het bestandssysteem kan gevaarlijk zijn, omdat het bestanden kan wijzigen of verwijderen. Raadpleeg de <a>documentatie</a> voordat u dit activeert.",
         skills: {
           "read-text-file": {
             title: "Bestand openen",
@@ -1196,6 +1196,12 @@ const TRANSLATIONS = {
       tool_call_was_rejected:
         "De aanvraag om het gereedschap te gebruiken is afgewezen.",
     },
+    custom_skills: "Aangepaste vaardigheden",
+    agent_flows: "Stroom van agenten",
+    no_tools_found: "Geen overeenkomende gereedschappen gevonden.",
+    loading_mcp_servers: "MCP-servers worden geladen...",
+    app_integrations: "Integraties met apps",
+    sub_skills: "Specifieke vaardigheden",
   },
   profile_settings: {
     edit_account: "Account bewerken",

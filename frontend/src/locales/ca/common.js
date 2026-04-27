@@ -347,7 +347,7 @@ const TRANSLATIONS = {
         readActions: "Accions de lectura",
         writeActions: "Accions d'escriptura",
         warning:
-          "L'accés al sistema de fitxers pot ser perillós, ja que pot modificar o eliminar fitxers. Consulta la <link>documentació</link> abans d'activar-ho.",
+          "L'accés al sistema de fitxers pot ser perillós, ja que pot modificar o eliminar fitxers. Consulta la <a>documentació</a> abans d'activar-ho.",
         skills: {
           "read-text-file": {
             title: "Llegeix fitxer",
@@ -1399,6 +1399,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "La crida a l'eina ha estat aprovada",
       tool_call_was_rejected: "La crida a l'eina ha estat rebutjada",
     },
+    custom_skills: "Habilitats personalitzades",
+    agent_flows: "Fluxos d'agents",
+    no_tools_found: "No s'han trobat eines corresponents.",
+    loading_mcp_servers: "Carregant servidors MCP...",
+    app_integrations: "Integracions d'aplicacions",
+    sub_skills: "Habilitats específiques",
   },
   profile_settings: {
     edit_account: "Edita el compte",

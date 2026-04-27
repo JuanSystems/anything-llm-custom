@@ -332,7 +332,7 @@ const TRANSLATIONS = {
         readActions: "Læs handlinger",
         writeActions: "Skriv handlinger",
         warning:
-          "Adgang til filsystemet kan være farligt, da det kan ændre eller slette filer. Se venligst <link>dokumentationen</link> før du aktiverer denne funktion.",
+          "Adgang til filsystemet kan være farligt, da det kan ændre eller slette filer. Se venligst <a>dokumentationen</a> før du aktiverer denne funktion.",
         skills: {
           "read-text-file": {
             title: "Åbn fil",
@@ -1188,6 +1188,12 @@ const TRANSLATIONS = {
         "Anmodningen om at bruge værktøjet blev godkendt.",
       tool_call_was_rejected: "Anmodningen om at bruge værktøjet blev afvist.",
     },
+    custom_skills: "Skræddersyede færdigheder",
+    agent_flows: "Agentstrømme",
+    no_tools_found: "Ingen matchende værktøjer fundet",
+    loading_mcp_servers: "Indlæser MCP-servere...",
+    app_integrations: "App-integrationer",
+    sub_skills: "Specifikke færdigheder",
   },
   profile_settings: {
     edit_account: "Rediger konto",

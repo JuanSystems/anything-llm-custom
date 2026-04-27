@@ -327,7 +327,7 @@ const TRANSLATIONS = {
         readActions: "Leia toimingud",
         writeActions: "Toimingud",
         warning:
-          "Failisüsteemi juurimine võib olla ohtlik, kuna see võib muuta või kustutada faile. Enne selle aktiveerimist, palun vaadake <link>dokumentatsiooni</link>.",
+          "Failisüsteemi juurimine võib olla ohtlik, kuna see võib muuta või kustutada faile. Enne selle aktiveerimist, palun vaadake <a>dokumentatsiooni</a>.",
         skills: {
           "read-text-file": {
             title: "Ava fail",
@@ -1247,6 +1247,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "Vahendite tellimuse kinnitati.",
       tool_call_was_rejected: "Vahendite taotlus jäeti rahuldamata.",
     },
+    custom_skills: "Kohandatud oskused",
+    agent_flows: "Agentide liiklus",
+    no_tools_found: "Välja ei leitud sobivaid tööriistu",
+    loading_mcp_servers: "MCP-serverite laadimine...",
+    app_integrations: "Rakenduste integreerimine",
+    sub_skills: "Alamspetsid",
   },
   profile_settings: {
     edit_account: "Muuda kontot",

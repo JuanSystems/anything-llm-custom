@@ -328,7 +328,7 @@ const TRANSLATIONS = {
         readActions: "اقرأ الإجراءات",
         writeActions: "الإجراءات",
         warning:
-          "الوصول إلى نظام الملفات يمكن أن يكون خطيرًا، لأنه يمكنه تعديل أو حذف الملفات. يرجى الرجوع إلى الوثائق <link> قبل تمكينه.",
+          "الوصول إلى نظام الملفات يمكن أن يكون خطيرًا، لأنه يمكنه تعديل أو حذف الملفات. يرجى الرجوع إلى الوثائق قبل تمكينه.",
         skills: {
           "read-text-file": {
             title: "اقرأ الملف",
@@ -1174,6 +1174,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "تمت الموافقة على طلب الحصول على الأدوات.",
       tool_call_was_rejected: "تم رفض طلب الاتصال بالأداة.",
     },
+    custom_skills: "المهارات المخصصة",
+    agent_flows: "تدفقات الوكلاء",
+    no_tools_found: "لم يتم العثور على أدوات مطابقة.",
+    loading_mcp_servers: "تحميل خوادم MCP...",
+    app_integrations: "تكامل التطبيقات",
+    sub_skills: "مهارات فرعية",
   },
   profile_settings: {
     edit_account: "تحرير الحساب",

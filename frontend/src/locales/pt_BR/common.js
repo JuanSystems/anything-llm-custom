@@ -335,7 +335,7 @@ const TRANSLATIONS = {
         readActions: "Ler ações",
         writeActions: "Ações a serem executadas",
         warning:
-          "O acesso ao sistema de arquivos pode ser perigoso, pois pode modificar ou excluir arquivos. Por favor, consulte a <link>documentação</link> antes de habilitar.",
+          "O acesso ao sistema de arquivos pode ser perigoso, pois pode modificar ou excluir arquivos. Por favor, consulte a <a>documentação</a> antes de habilitar.",
         skills: {
           "read-text-file": {
             title: "Abrir arquivo",
@@ -1280,6 +1280,12 @@ const TRANSLATIONS = {
       tool_call_was_rejected:
         "A solicitação de acesso à ferramenta foi rejeitada.",
     },
+    custom_skills: "Habilidades personalizadas",
+    agent_flows: "Fluxo de Agentes",
+    no_tools_found: "Nenhuma ferramenta correspondente encontrada.",
+    loading_mcp_servers: "Carregando servidores MCP...",
+    app_integrations: "Integrações de aplicativos",
+    sub_skills: "Habilidades específicas",
   },
   profile_settings: {
     edit_account: "Editar conta",

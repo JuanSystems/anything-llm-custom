@@ -330,7 +330,7 @@ const TRANSLATIONS = {
         readActions: "Okunmuş Eylemler",
         writeActions: "Yapılacak İşler",
         warning:
-          "Dosya sistemine erişim tehlikeli olabilir, çünkü dosyaları değiştirebilir veya silebilir. Bu özelliği etkinleştirmeden önce lütfen <link>belgelendirme</link>'i inceleyin.",
+          "Dosya sistemine erişim tehlikeli olabilir, çünkü dosyaları değiştirebilir veya silebilir. Bu özelliği etkinleştirmeden önce lütfen <a>belgelendirme</a>'i inceleyin.",
         skills: {
           "read-text-file": {
             title: "Dosyayı aç",
@@ -1200,6 +1200,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "Araç talebi onaylandı.",
       tool_call_was_rejected: "Ara çağrısı reddedildi.",
     },
+    custom_skills: "Özel Beceri",
+    agent_flows: "Ajans Akışları",
+    no_tools_found: "Uyumlu herhangi bir araç bulunamadı",
+    loading_mcp_servers: "MCP sunucularının yüklenmesi...",
+    app_integrations: "Uygulama Entegrasyonları",
+    sub_skills: "Alt beceriler",
   },
   profile_settings: {
     edit_account: "Hesabı Düzenle",

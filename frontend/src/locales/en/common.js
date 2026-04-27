@@ -341,7 +341,7 @@ const TRANSLATIONS = {
         readActions: "Read Actions",
         writeActions: "Write Actions",
         warning:
-          "Filesystem access can be dangerous as it can modify or delete files. Please consult the <link>documentation</link> before enabling.",
+          "Filesystem access can be dangerous as it can modify or delete files. Please consult the <a>documentation</a> before enabling.",
         skills: {
           "read-text-file": {
             title: "Read File",
@@ -1336,6 +1336,12 @@ const TRANSLATIONS = {
     slash_commands: "Slash Commands",
     agent_skills: "Agent Skills",
     manage_agent_skills: "Manage Agent Skills",
+    app_integrations: "App Integrations",
+    custom_skills: "Custom Skills",
+    agent_flows: "Agent Flows",
+    sub_skills: "Sub-skills",
+    no_tools_found: "No matching tools found",
+    loading_mcp_servers: "Loading MCP servers...",
     start_agent_session: "Start Agent Session",
     agent_skills_disabled_in_session:
       "Can't modify skills during an active agent session. Use /exit to end the session first.",

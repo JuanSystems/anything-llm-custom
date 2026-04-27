@@ -335,7 +335,7 @@ const TRANSLATIONS = {
         readActions: "Lasīt",
         writeActions: "Rīcības",
         warning:
-          "Pieejums failu sistēmai var būt bīstams, jo tas var mainīt vai dzēst failus. Lūdzu, konsultējieties ar <link>dokumentāciju</link> pirms aktivizēšanas.",
+          "Pieejums failu sistēmai var būt bīstams, jo tas var mainīt vai dzēst failus. Lūdzu, konsultējieties ar <a>dokumentāciju</a> pirms aktivizēšanas.",
         skills: {
           "read-text-file": {
             title: "Atvērt failu",
@@ -1293,6 +1293,12 @@ const TRANSLATIONS = {
       tool_call_was_rejected:
         "Pieprasījums par instrumenta izmantošanu tika atgrūstīts.",
     },
+    custom_skills: "Pielāgotas prasmes",
+    agent_flows: "Aģentu plūsmas",
+    no_tools_found: "Neatradusies atbilstošas instrumentus",
+    loading_mcp_servers: "Ielāde MCP serverus...",
+    app_integrations: "Dienvidligzdas integrācijas",
+    sub_skills: "Īpašās prasmes",
   },
   profile_settings: {
     edit_account: "Rediģēt kontu",

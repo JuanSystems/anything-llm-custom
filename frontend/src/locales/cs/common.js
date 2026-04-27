@@ -344,7 +344,7 @@ const TRANSLATIONS = {
         readActions: "Činnosti",
         writeActions: "Akce",
         warning:
-          "Přístup k souborovému systému může být nebezpečný, protože může upravovat nebo mazat soubory. Před zapnutím funkce prosím nahlédněte do dokumentace <link>dokumentace</link>.",
+          "Přístup k souborovému systému může být nebezpečný, protože může upravovat nebo mazat soubory. Před zapnutím funkce prosím nahlédněte do dokumentace <a>dokumentace</a>.",
         skills: {
           "read-text-file": {
             title: "Otevřít soubor",
@@ -1308,6 +1308,12 @@ const TRANSLATIONS = {
       tool_call_was_approved: "Žádost o použití nástroje byla schválena.",
       tool_call_was_rejected: "Žádost o použití nástroje byla zamítnuta.",
     },
+    custom_skills: "Vlastní dovednosti",
+    agent_flows: "Toky agentů",
+    no_tools_found: "Nebyla nalezena žádná odpovídající nářadí.",
+    loading_mcp_servers: "Načítají se servery pro MCP...",
+    app_integrations: "Integrace aplikací",
+    sub_skills: "Specifické dovednosti",
   },
   profile_settings: {
     edit_account: "Upravit účet",

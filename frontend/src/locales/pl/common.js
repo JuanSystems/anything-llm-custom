@@ -337,7 +337,7 @@ const TRANSLATIONS = {
         readActions: "Czytać akcje",
         writeActions: "Działania",
         warning:
-          "Dostęp do systemu plików może być niebezpieczny, ponieważ może modyfikować lub usuwać pliki. Prosimy o zapoznanie się z dokumentacją <link> przed włączeniem tej funkcji.",
+          "Dostęp do systemu plików może być niebezpieczny, ponieważ może modyfikować lub usuwać pliki. Prosimy o zapoznanie się z dokumentacją <a> przed włączeniem tej funkcji.",
         skills: {
           "read-text-file": {
             title: "Otwórz plik",
@@ -1297,6 +1297,12 @@ const TRANSLATIONS = {
         "Zgłoszenie dotyczące narzędzia zostało zatwierdzone.",
       tool_call_was_rejected: "Żądanie użycia narzędzia zostało odrzucone.",
     },
+    custom_skills: "Dostosowane umiejętności",
+    agent_flows: "Przepływy agencji",
+    no_tools_found: "Nie znaleziono odpowiadających narzędzi.",
+    loading_mcp_servers: "Ładowanie serwerów MCP...",
+    app_integrations: "Integracje z aplikacjami",
+    sub_skills: "Specyficzne umiejętności",
   },
   profile_settings: {
     edit_account: "Edytuj konto",
