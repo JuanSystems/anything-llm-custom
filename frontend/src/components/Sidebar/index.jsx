@@ -182,22 +182,27 @@ function SidebarActiveSection() {
   }, [slug, isHomePage]);
 
   return (
-    <div className="flex-grow min-h-0 overflow-y-auto no-scroll">
+    <>
+      {/* FIJO: Label del workspace activo */}
       {activeWorkspace && (
-        <>
-          <div className="flex items-center gap-x-2 px-2 pt-3 pb-1 border-t border-white/10">
-            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest truncate">
-              {activeWorkspace.name}
-            </p>
-          </div>
+        <div className="flex-shrink-0 flex items-center gap-x-2 px-2 pt-3 pb-1 border-t border-white/10">
+          <p className="text-white/40 text-xs font-semibold uppercase tracking-widest truncate">
+            {activeWorkspace.name}
+          </p>
+        </div>
+      )}
+
+      {/* SCROLLABLE: Threads */}
+      <div className="flex-grow min-h-0 overflow-y-auto no-scroll">
+        {activeWorkspace && (
           <ThreadContainer
             workspace={activeWorkspace}
             isActive={true}
             isVirtualThread={isHomePage && !slug}
           />
-        </>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -336,6 +341,18 @@ function WorkspaceAndThreadTooltips() {
         id="workspace-thread-name"
         place="right"
         delayShow={800}
+        className="tooltip !text-xs z-99"
+      />
+      <Tooltip
+        id="upload-workspace"
+        place="top"
+        delayShow={300}
+        className="tooltip !text-xs z-99"
+      />
+      <Tooltip
+        id="gear-workspace"
+        place="top"
+        delayShow={300}
         className="tooltip !text-xs z-99"
       />
     </React.Fragment>,

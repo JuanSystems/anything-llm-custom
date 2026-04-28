@@ -1,0 +1,26 @@
+[36m[EncryptionManager][0m Loaded existing key & salt for encrypting arbitrary data.
+[35m[TokenManager][0m Initialized new TokenManager instance for model: gpt-3.5-turbo
+[35m[TokenManager][0m Returning existing instance for model: gpt-3.5-turbo
+prisma:info Starting a sqlite pool with 9 connections.
+[32m[TELEMETRY ENABLED][0m Anonymous Telemetry enabled. Telemetry helps Mintplex Labs Inc improve AnythingLLM.
+[32m[TELEMETRY SENT][0m {
+  event: 'server_boot',
+  distinctId: '2eeca7c0-da49-4cf3-8fab-f00a3ab9eddd',
+  properties: {
+    commit: '330dffb2d8fea95fb9855162af58e9b579de4ede',
+    runtime: 'other'
+  }
+}
+[36m[CommunicationKey][0m RSA key pair generated for signed payloads within AnythingLLM services.
+[36m[EncryptionManager][0m Loaded existing key & salt for encrypting arbitrary data.
+[36m[PushNotifications][0m Loaded existing VAPID keys!
+[36m[BackgroundWorkerService][0m Starting...
+[36m[BackgroundWorkerService][0m Service started with 2 jobs [ 'cleanup-orphan-documents', 'cleanup-generated-files' ]
+[36m[PushNotifications][0m Loading single user mode subscriptions...
+Primary server in HTTP mode listening on port 3001
+[36m[MetaGenerator][0m fetching custom meta tag settings...
+[36m[AgentLLM - gemma2][0m Generic OpenAI supports native tool calling is DISABLED via ENV. Will use UnTooled instead.
+prisma:info Starting a sqlite pool with 9 connections.
+[33m[6652:17092][0m: No direct uploads path found - exiting.
+[33m[6652:17092][0m: No direct uploads path found - exiting. { service: 'bg-worker', origin: 'cleanup-orphan-documents' }
+Worker for job "cleanup-orphan-documents" exited with code 0 undefined

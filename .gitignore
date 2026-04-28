@@ -10,3 +10,11 @@ aws_cf_deploy_anything_llm.json
 yarn.lock
 *.bak
 .idea
+
+server/storage/
+server/.env
+frontend/.env
+collector/.env
+*.sqlite
+*.sqlite3
+*.db
