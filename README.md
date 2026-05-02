@@ -8,7 +8,7 @@
 
 <p align="center">
   <b>Fork personalizado de <a href="https://github.com/Mintplex-Labs/anything-llm">AnythingLLM</a></b><br/>
-  <sub>Mejoras de interfaz inspiradas en DeepSeek — sidebar siempre visible y navegación fija.</sub>
+  <sub>Mejoras de interfaz inspiradas en DeepSeek — sidebar siempre visible, navegación fija y corrección de bugs en streaming de chat.</sub>
 </p>
 
 ---
@@ -48,12 +48,29 @@ Este fork mantiene la **funcionalidad completa** de AnythingLLM, pero redefine l
 
 ## 📁 Archivos modificados
 
-Solo **3 archivos** respecto al original:
+### Interfaz del Sidebar
+**3 archivos** respecto al original:
 
 ```
 frontend/src/components/Sidebar/index.jsx
 frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx
 frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/index.jsx
+```
+
+### Mejoras de Estabilidad y Rendimiento del Chat
+Se corrigieron **4 bugs** que causaban parpadeo y desaparición de mensajes con textos largos (fix a issue #5539 / PR #5473):
+
+- **PromptReply** — Comparación explícita en `memo()` para actualizar el DOM durante el streaming
+- **HistoricalMessage** — Se eliminó `TruncatableContent` que truncaba las respuestas del asistente a `250px`
+- **ChatHistory** — Keys estables (`uuid`/`chatId`) en lugar de `index` del array, evitando remontas innecesarias
+- **RenderChatContent** — Sin parpadeo de `1-frame` al medir desbordamiento
+
+Archivos modificados:
+
+```
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/index.jsx
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/HistoricalMessage/index.jsx
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/PromptReply/index.jsx
 ```
 
 ## 🔄 Cómo mantenerse actualizado con el proyecto original
@@ -70,7 +87,7 @@ git checkout mi-interfaz
 git rebase main
 ```
 
-> ⚠️ Si hay conflictos, revisa los **3 archivos** listados en la sección anterior.
+> ⚠️ Si hay conflictos, revisa los **6 archivos** listados en las secciones anteriores (3 del sidebar + 3 del chat).
 
 ## 🚀 Instalación y uso
 
