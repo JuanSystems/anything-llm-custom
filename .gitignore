@@ -19,3 +19,4 @@ collector/.env
 *.sqlite3
 *.db
 *.log
+.next/
