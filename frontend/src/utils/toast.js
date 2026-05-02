@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const showToast = (message, type = "default", opts = {}) => {
   const theme = localStorage?.getItem("theme") || "default";
   const options = {
-    position: "bottom-center",
+    position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

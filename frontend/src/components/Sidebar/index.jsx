@@ -101,7 +101,7 @@ export default function Sidebar() {
 
 function SidebarNewChatButton() {
   const { t } = useTranslation();
-  const { slug } = useParams();
+  const { slug, threadSlug: currentThreadSlug } = useParams();
   const isHomePage = !!useMatch("/");
   const [activeWorkspace, setActiveWorkspace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -127,6 +127,28 @@ function SidebarNewChatButton() {
   const handleNewThread = async () => {
     if (!activeWorkspace) return;
     setLoading(true);
+
+    // Load existing threads to avoid creating duplicate blank ones
+    const { threads } = await Workspace.threads.all(activeWorkspace.slug);
+    const blankThreads = threads.filter((t) => t.name === "Nuevo chat");
+
+    // If on a blank thread, inform the user
+    if (currentThreadSlug && blankThreads.some((t) => t.slug === currentThreadSlug)) {
+      setLoading(false);
+      showToast("Ya tienes un chat sin mensajes", "info", { clear: true });
+      return;
+    }
+
+    // If there are blank threads, navigate to the first one and inform the user
+    if (blankThreads.length > 0) {
+      setLoading(false);
+      showToast("Ya existe un chat sin mensajes", "info", { clear: true });
+      window.location.replace(
+        paths.workspace.thread(activeWorkspace.slug, blankThreads[0].slug)
+      );
+      return;
+    }
+
     const { thread, error } = await Workspace.threads.new(activeWorkspace.slug);
     if (error) {
       showToast(`No se pudo crear el chat - ${error}`, "error", { clear: true });
