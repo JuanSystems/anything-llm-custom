@@ -79,6 +79,7 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
     const prevChatHistory = [
       ...chatHistory,
       {
+        uuid: v4(),
         content: currentMessage,
         role: "user",
         attachments: parseAttachments(),
@@ -186,6 +187,7 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
       prevChatHistory = [
         ...chatHistory,
         {
+          uuid: v4(),
           content: text,
           role: "user",
           attachments,

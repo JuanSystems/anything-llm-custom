@@ -2,6 +2,7 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { Info, Warning } from "@phosphor-icons/react";
 import Actions from "./Actions";
 import renderMarkdown from "@/utils/chat/markdown";
+import CollapsibleContent from "../CollapsibleContent";
 import Citations from "../Citation";
 import { v4 } from "uuid";
 import DOMPurify from "@/utils/chat/purify";
@@ -96,6 +97,7 @@ const HistoricalMessage = ({
         className={`${isDeleted ? "animate-remove" : ""} flex justify-end w-full group`}
       >
         <div className="py-4 px-4 flex flex-col items-end">
+          <CollapsibleContent message={message} msgKey={uuid}>
           <div className="bg-zinc-800 light:bg-slate-100 rounded-[20px] rounded-br-none px-4 py-3.5 max-w-[600px] [&_p]:m-0">
             <RenderChatContent
               role={role}
@@ -104,6 +106,7 @@ const HistoricalMessage = ({
             />
             <ChatAttachments attachments={attachments} />
           </div>
+        </CollapsibleContent>
           <Actions
             message={message}
             feedbackScore={feedbackScore}

@@ -58,12 +58,13 @@ frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/index.jsx
 ```
 
 ### Mejoras de Estabilidad y Rendimiento del Chat
-Se corrigieron **4 bugs** que causaban parpadeo y desaparición de mensajes con textos largos (fix a issue #5539 / PR #5473):
+Se corrigieron **4 bugs** que causaban parpadeo y desaparición de mensajes con textos largos (fix a issue #5539 / PR #5473), y se añadió colapso persistente para mensajes del usuario:
 
 - **PromptReply** — Comparación explícita en `memo()` para actualizar el DOM durante el streaming
 - **HistoricalMessage** — Se eliminó `TruncatableContent` que truncaba las respuestas del asistente a `250px`
 - **ChatHistory** — Keys estables (`uuid`/`chatId`) en lugar de `index` del array, evitando remontas innecesarias
 - **RenderChatContent** — Sin parpadeo de `1-frame` al medir desbordamiento
+- **CollapsibleContent** — Toggle "Mostrar más/menos" con estado persistente vía `Map` module-level, sin parpadeo durante streaming
 
 Archivos modificados:
 
@@ -71,6 +72,22 @@ Archivos modificados:
 frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/index.jsx
 frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/HistoricalMessage/index.jsx
 frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/PromptReply/index.jsx
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/CollapsibleContent/index.jsx
+```
+
+### Mensajes de Usuario Colapsables
+Se añadió un toggle "Mostrar más/Mostrar menos" para mensajes largos del usuario (>200 caracteres):
+- **Colapsado por defecto** — mensajes se muestran con `max-height: 300px`
+- **Persistente** — el estado se mantiene al hacer clic (expandir/colapsar)
+- **Sin parpadeo** — usa `useRef` + `Map` module-level para preservar el estado durante streaming de respuestas AI
+- **Solo en mensajes del usuario** — las respuestas del AI no se ven afectadas
+
+Archivos modificados:
+
+```
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/HistoricalMessage/index.jsx
+frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/CollapsibleContent/index.jsx
+frontend/src/components/WorkspaceChat/ChatContainer/index.jsx
 ```
 
 ### Detección Automática de Scripts de Shell
