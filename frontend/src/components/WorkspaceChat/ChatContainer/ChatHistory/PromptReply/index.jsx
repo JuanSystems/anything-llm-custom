@@ -105,4 +105,11 @@ function RenderAssistantChatContent({ message, messageId }) {
   );
 }
 
-export default memo(PromptReply);
+export default memo(PromptReply, (prev, next) => {
+  return (
+    prev.reply === next.reply &&
+    prev.uuid === next.uuid &&
+    prev.pending === next.pending &&
+    prev.error === next.error
+  );
+});

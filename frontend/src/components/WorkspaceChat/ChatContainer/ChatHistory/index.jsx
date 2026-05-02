@@ -328,7 +328,7 @@ function buildMessages({
     } else {
       acc.push(
         <HistoricalMessage
-          key={index}
+          key={props.uuid ?? props.chatId ?? `msg-${index}`}
           uuid={props.uuid}
           message={props.content}
           role={props.role}

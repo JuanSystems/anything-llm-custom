@@ -97,14 +97,12 @@ const HistoricalMessage = ({
       >
         <div className="py-4 px-4 flex flex-col items-end">
           <div className="bg-zinc-800 light:bg-slate-100 rounded-[20px] rounded-br-none px-4 py-3.5 max-w-[600px] [&_p]:m-0">
-            <TruncatableContent>
-              <RenderChatContent
-                role={role}
-                message={message}
-                messageId={uuid}
-              />
-              <ChatAttachments attachments={attachments} />
-            </TruncatableContent>
+            <RenderChatContent
+              role={role}
+              message={message}
+              messageId={uuid}
+            />
+            <ChatAttachments attachments={attachments} />
           </div>
           <Actions
             message={message}
@@ -230,61 +228,7 @@ function ChatAttachments({ attachments = [] }) {
       ))}
     </div>
   );
-}
-
-function TruncatableContent({ children }) {
-  const contentRef = useRef(null);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setIsOverflowing(contentRef.current.scrollHeight > 250);
-    }
-  }, []);
-
-  const showTruncation = !isExpanded && isOverflowing;
-
-  return (
-    <>
-      <div className="relative">
-        <div
-          ref={contentRef}
-          className={showTruncation ? "max-h-[250px] overflow-hidden" : ""}
-        >
-          {children}
-        </div>
-        {showTruncation && (
-          <>
-            <div
-              className="absolute bottom-0 left-0 right-0 h-[36px] light:hidden pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(39, 39, 42, 0.00) 0%, rgba(39, 39, 42, 0.65) 50%, #27272A 100%)",
-              }}
-            />
-            <div
-              className="absolute bottom-0 left-0 right-0 h-[36px] hidden light:block pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(241, 245, 249, 0.00) 0%, rgba(241, 245, 249, 0.65) 50%, #F1F5F9 100%)",
-              }}
-            />
-          </>
-        )}
-      </div>
-      {isOverflowing && (
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-zinc-300 light:text-slate-700 hover:text-white light:hover:text-slate-900 text-xs font-medium leading-4 mt-2"
-        >
-          {isExpanded ? t("chat_window.see_less") : t("chat_window.see_more")}
-        </button>
-      )}
-    </>
-  );
-}
+};
 
 const RenderChatContent = memo(
   ({ role, message, messageId }) => {
