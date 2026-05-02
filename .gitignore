@@ -21,3 +21,4 @@ collector/.env
 *.log
 .next/
 .logs/
+/.claude
