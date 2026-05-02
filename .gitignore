@@ -20,6 +20,4 @@ collector/.env
 *.db
 *.log
 .next/
-/.logs
-*.log
-/.logs
+.logs/
