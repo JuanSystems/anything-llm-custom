@@ -21,3 +21,5 @@ collector/.env
 *.log
 .next/
 /.logs
+*.log
+/.logs

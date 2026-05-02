@@ -8,7 +8,7 @@
 
 <p align="center">
   <b>Fork personalizado de <a href="https://github.com/Mintplex-Labs/anything-llm">AnythingLLM</a></b><br/>
-  <sub>Mejoras de interfaz inspiradas en DeepSeek — sidebar siempre visible, navegación fija y corrección de bugs en streaming de chat.</sub>
+  <sub>Mejoras de interfaz — sidebar siempre visible, navegación fija, corrección de bugs en streaming y detección automática de scripts.</sub>
 </p>
 
 ---
@@ -73,6 +73,20 @@ frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/HistoricalMessag
 frontend/src/components/WorkspaceChat/ChatContainer/ChatHistory/PromptReply/index.jsx
 ```
 
+### Detección Automática de Scripts de Shell
+Se añadió preprocesamiento del mensaje del usuario para detectar scripts de shell y envolverlos en bloques de código:
+
+- **Shebang** (`#!/bin/bash`, `#!/usr/bin/env zsh`, etc.) — Detecta el tipo de shell y envuelve automáticamente con triple comilla invertida (` ``` `) para evitar que markdown interprete `#` como títulos
+- **Heurística de comentarios** — Si el texto tiene 3+ líneas que empiezan con `# `, se asume que es un script bash y se envuelve automáticamente
+- **Evita doble-envolvimiento** — Si el mensaje ya está entre triple comilla invertida, no lo modifica
+
+Archivos modificados:
+
+```
+frontend/src/components/WorkspaceChat/ChatContainer/index.jsx
+frontend/src/utils/chat/index.js
+```
+
 ## 🔄 Cómo mantenerse actualizado con el proyecto original
 
 ```bash
@@ -87,7 +101,7 @@ git checkout mi-interfaz
 git rebase main
 ```
 
-> ⚠️ Si hay conflictos, revisa los **6 archivos** listados en las secciones anteriores (3 del sidebar + 3 del chat).
+> ⚠️ Si hay conflictos, revisa los **8 archivos** listados en las secciones anteriores (3 del sidebar + 3 del chat + 2 del script auto-detect).
 
 ## 🚀 Instalación y uso
 

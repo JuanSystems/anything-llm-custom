@@ -189,3 +189,38 @@ export function chatQueryRefusalResponse(workspace) {
     "There is no relevant information in this workspace to answer your query."
   );
 }
+
+const SHEBANG_PATTERN = /#!.*\b(bash|sh|zsh|fish)\b/;
+const COMMENT_LINE = /^# .+/m;
+const CODE_BLOCK_DELIMITER = "\`\`\`";
+
+function detectShellName(message) {
+  const match = message.match(SHEBANG_PATTERN);
+  if (!match) return "bash";
+  return match[1] === "sh" && message.includes("zsh") ? "zsh" : match[1];
+}
+
+export function wrapScriptInCodeBlock(message) {
+  if (!message || typeof message !== "string") return message;
+  if (message.startsWith(CODE_BLOCK_DELIMITER)) return message;
+
+  // 1. Detect shebang (#!/bin/bash, #!/usr/bin/env zsh, etc.)
+  if (message.includes("#!")) {
+    const shellName = detectShellName(message);
+    const normalized = message.endsWith("\n") ? message : message + "\n";
+    return `${CODE_BLOCK_DELIMITER}${shellName}\n${normalized}${CODE_BLOCK_DELIMITER}`;
+  }
+
+  // 2. Detect script with # comments (3+ lines starting with "# ")
+  const lines = message.split("\n");
+  let commentLineCount = 0;
+  for (const line of lines) {
+    if (/^#[\s#]/.test(line.trimStart())) commentLineCount++;
+  }
+  if (commentLineCount >= 3) {
+    const normalized = message.endsWith("\n") ? message : message + "\n";
+    return `${CODE_BLOCK_DELIMITER}bash\n${normalized}${CODE_BLOCK_DELIMITER}`;
+  }
+
+  return message;
+}

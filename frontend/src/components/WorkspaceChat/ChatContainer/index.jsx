@@ -6,7 +6,7 @@ import PromptInput, {
   PROMPT_INPUT_ID,
 } from "./PromptInput";
 import Workspace from "@/models/workspace";
-import handleChat, { ABORT_STREAM_EVENT } from "@/utils/chat";
+import handleChat, { ABORT_STREAM_EVENT, wrapScriptInCodeBlock } from "@/utils/chat";
 import { isMobile } from "react-device-detect";
 import { SidebarMobileHeader } from "../../Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
@@ -67,9 +67,10 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const currentMessage =
+    let currentMessage =
       document.getElementById(PROMPT_INPUT_ID)?.value || "";
     if (!currentMessage) return false;
+    currentMessage = wrapScriptInCodeBlock(currentMessage);
 
     // Clear the localStorage draft for this thread/workspace so that if the
     // PromptInput remounts (empty→chat transition), it won't restore stale text
@@ -158,6 +159,7 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
     }
 
     if (!text || text === "") return false;
+    text = wrapScriptInCodeBlock(text);
 
     // Clear the localStorage draft so that if the PromptInput remounts
     // (e.g. /reset causing empty→chat or chat→empty transitions),
