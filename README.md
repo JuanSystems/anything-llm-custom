@@ -8,7 +8,7 @@
 
 <p align="center">
   <b>Fork personalizado de <a href="https://github.com/Mintplex-Labs/anything-llm">AnythingLLM</a></b><br/>
-  <sub>Mejoras de interfaz — sidebar siempre visible, navegación fija, corrección de bugs en streaming y detección automática de scripts.</sub>
+  <sub>Mejoras de interfaz — sidebar siempre visible, navegación fija, orden de chats, prevención de duplicados, corrección de bugs en streaming y detección automática de scripts.</sub>
 </p>
 
 ---
@@ -104,6 +104,34 @@ frontend/src/components/WorkspaceChat/ChatContainer/index.jsx
 frontend/src/utils/chat/index.js
 ```
 
+### Orden de Threads y Gestión de Chats Vacíos
+Se corrigió el orden de los threads en el sidebar y se evitan chats vacíos duplicados:
+
+- **Orden descendente por fecha** — Los threads se listan por `lastUpdatedAt` (más recientes primero) en lugar de orden de inserción. Los chats nuevos aparecen arriba
+- **Nombre por defecto en español** — Los nuevos threads se crean con el nombre "Nuevo chat" en lugar de "Thread"
+- **Prevención de duplicados** — Al hacer clic en "Nuevo chat" cuando ya existe un chat vacío, se navega a ese en lugar de crear otro. Se muestra un toast informativo para que el usuario entienda la situación
+
+Archivos modificados:
+
+```
+server/endpoints/workspaceThreads.js
+server/models/workspaceThread.js
+frontend/src/components/Sidebar/index.jsx
+frontend/src/utils/toast.js
+```
+
+### Toast en la Parte Superior
+Se movió la posición de los mensajes toast de `bottom-center` a `top-center` para mayor visibilidad:
+
+- **Todos los toasts** ahora aparecen arriba al centro
+- Incluye mensajes de info, error, éxito y advertencia
+
+Archivos modificados:
+
+```
+frontend/src/utils/toast.js
+```
+
 ## 🔄 Cómo mantenerse actualizado con el proyecto original
 
 ```bash
@@ -118,7 +146,7 @@ git checkout mi-interfaz
 git rebase main
 ```
 
-> ⚠️ Si hay conflictos, revisa los **8 archivos** listados en las secciones anteriores (3 del sidebar + 3 del chat + 2 del script auto-detect).
+> ⚠️ Si hay conflictos, revisa los **12 archivos** listados en las secciones anteriores (3 del sidebar + 4 del chat + 2 del script auto-detect + 3 del orden de chats + 1 de toast).
 
 ## 🚀 Instalación y uso
 
