@@ -1245,7 +1245,7 @@ async function updateENV(newENVs = {}, force = false, userId = null) {
     await runAfterAllFunc(newValues, userId);
 
   await logChangesToEventLog(newValues, userId);
-  if (process.env.NODE_ENV === "production") dumpENV();
+  dumpENV(newValues);
   return { newValues, error: error?.length > 0 ? error : false };
 }
 
@@ -1271,11 +1271,18 @@ async function logChangesToEventLog(newValues = {}, userId = null) {
   return;
 }
 
-function dumpENV() {
+function dumpENV(modifiedKeys = {}) {
   const fs = require("fs");
   const path = require("path");
 
   const frozenEnvs = {};
+
+  // Primero escribir keys modificadas que podrían no tener valor preexistente
+  for (const [key, value] of Object.entries(modifiedKeys)) {
+    if (value !== undefined && value !== null) {
+      frozenEnvs[key] = String(value);
+    }
+  }
   const protectedKeys = [
     ...Object.values(KEY_MAPPING).map((values) => values.envKey),
     // Manually Add Keys here which are not already defined in KEY_MAPPING
@@ -1353,8 +1360,8 @@ function dumpENV() {
 
   for (const key of protectedKeys) {
     const envValue = process.env?.[key] || null;
-    if (!envValue) continue;
-    frozenEnvs[key] = process.env?.[key] || null;
+    if (!envValue && !frozenEnvs[key]) continue;
+    frozenEnvs[key] = process.env?.[key] ?? frozenEnvs[key];
   }
 
   var envResult = `# Auto-dump ENV from system call on ${new Date().toTimeString()}\n`;
